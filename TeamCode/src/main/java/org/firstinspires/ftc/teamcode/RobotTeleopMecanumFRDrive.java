@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -52,7 +53,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
  *
  */
 @TeleOp(name = "Robot: Field Relative Mecanum Drive", group = "Robot")
-@Disabled
 public class RobotTeleopMecanumFRDrive extends OpMode {
     // This declares the four motors needed
     DcMotor frontLeftDrive;
@@ -65,15 +65,17 @@ public class RobotTeleopMecanumFRDrive extends OpMode {
 
     @Override
     public void init() {
-        frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_drive");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
-        backLeftDrive = hardwareMap.get(DcMotor.class, "back_left_drive");
-        backRightDrive = hardwareMap.get(DcMotor.class, "back_right_drive");
+        frontLeftDrive = hardwareMap.get(DcMotor.class, "fl");
+        frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
+        backLeftDrive = hardwareMap.get(DcMotor.class, "bl");
+        backRightDrive = hardwareMap.get(DcMotor.class, "br");
 
         // We set the left motors in reverse which is needed for drive trains where the left
         // motors are opposite to the right ones.
         backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         frontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        backRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
 
         // This uses RUN_USING_ENCODER to be more accurate.   If you don't have the encoder
         // wires, you should remove these

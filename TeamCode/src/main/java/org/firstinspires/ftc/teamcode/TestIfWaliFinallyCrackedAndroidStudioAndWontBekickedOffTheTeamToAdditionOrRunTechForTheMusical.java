@@ -54,20 +54,20 @@ import com.qualcomm.robotcore.util.Range;
 public class TestIfWaliFinallyCrackedAndroidStudioAndWontBekickedOffTheTeamToAdditionOrRunTechForTheMusical extends LinearOpMode {
 
     /* Declare OpMode members. */
-    public DcMotor  MotorTester   = null;
+    public DcMotor  frontRightDrive = null;
 
 
     @Override
     public void runOpMode() {
 
         // Define and Initialize Motors
-        MotorTester  = hardwareMap.get(DcMotor.class, "Motor Tester");
+          frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
 
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
-        MotorTester.setDirection(DcMotor.Direction.FORWARD);
+        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
 
 
 
@@ -84,11 +84,11 @@ public class TestIfWaliFinallyCrackedAndroidStudioAndWontBekickedOffTheTeamToAdd
 
             // Use gamepad buttons to move arm up (Y) and down (A) to test the motors.
             if (gamepad1.y)
-                MotorTester.setPower(1);
+                frontRightDrive.setPower(1);
             else if (gamepad1.a)
-                MotorTester.setPower(-1);
+                frontRightDrive.setPower(-1);
             else
-                MotorTester.setPower(0.0);
+                frontRightDrive.setPower(0.0);
 
             // Send telemetry message to signify robot running and what Wali will do;
             if (gamepad1.y || gamepad1.a) {
