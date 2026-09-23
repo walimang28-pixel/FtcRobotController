@@ -73,7 +73,7 @@ public class TestIfWaliFinallyCrackedAndroidStudioAndWontBekickedOffTheTeamToAdd
 
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData(">", "Robot Ready. Let's see will Wali Continue robotics or join the musical  Press START.");    //
+        telemetry.addData(">", "Robot Ready. Let's see will, Wali Continue robotics or join the musical  Press START.");    //
         telemetry.update();
 
         // Wait for the game to start (driver presses START)
