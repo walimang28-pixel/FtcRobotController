@@ -30,12 +30,9 @@
 package org.firstinspires.ftc.teamcode;
 
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.Range;
 
 /*
  * This OpMode executes a POV Game style Teleop for a direct drive robot
@@ -96,7 +93,7 @@ public class TestIfWaliFinallyCrackedAndroidStudioAndWontBekickedOffTheTeamToAdd
                 telemetry.update();
             }
             else {
-                telemetry.addData("Status","something went terribly wrong & Wali should never be near a robot again, and should move on to the high schools production of The Little Mermiad!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
+                telemetry.addData("Status","something went terribly wrong & Wali should never be near a robot again, and should move on to the high schools production of The Little Mermiad!!!!!!!!!!!!!!!!!!!!!!!!!!!!  Or you are not pressing the button and Wali is still GOATED!");
                 telemetry.update();
             }
 
