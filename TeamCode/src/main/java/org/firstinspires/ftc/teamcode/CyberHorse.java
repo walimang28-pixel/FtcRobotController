@@ -126,7 +126,7 @@ public class CyberHorse extends LinearOpMode {
             Remember the goal for this season, to try and mitigate the possibility of human error while in my opmode
             So functions will be my best friend.
             */
-
+//!
             //Write any other Teleop controls Over here
 
             // This is the game element transfer system (wind)

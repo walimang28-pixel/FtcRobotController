@@ -53,7 +53,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Also add a new OpMode, select the sample ConceptExternalHardwareClass.java, and select TeleOp.
  *
  */
-
+//!
 public class MyRobot {
 
     /* Declare OpMode members. */
