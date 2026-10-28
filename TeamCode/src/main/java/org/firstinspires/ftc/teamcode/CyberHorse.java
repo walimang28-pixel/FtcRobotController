@@ -131,13 +131,13 @@ public class CyberHorse extends LinearOpMode {
 
             // This is the game element transfer system (wind)
             if (gamepad2.dpad_left) {
-                robot.Wind.setPosition(.25);
+                robot.Transfer.setPower(.25);
                 telemetry.addLine();
                 telemetry.addData("Transfer System Status","Active Positive");
                 telemetry.update();
             }
             else if (gamepad2.dpad_right) {
-                robot.Wind.setPosition(-.25);
+                robot.Transfer.setPower(-.25);
                 telemetry.addLine();
                 telemetry.addData("Transfer System Status","Negative Positive");
                 telemetry.update();

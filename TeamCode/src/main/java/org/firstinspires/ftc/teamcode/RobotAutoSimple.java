@@ -30,7 +30,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 /*
@@ -60,14 +59,14 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  */
 
 @Autonomous(name="Robot: Simple Drive F Auto ", group="Robot")
-@Disabled
+
 public class RobotAutoSimple extends LinearOpMode {
 
     /* Declare OpMode members. */
     MyRobot robot = new MyRobot(this);
 
     // Calculate the COUNTS_PER_INCH for your specific drive train.
-    // Go to your motor vendor website to determi0ne your motor's COUNTS_PER_MOTOR_REV
+    // Go to your motor vendor website to determine your motor's COUNTS_PER_MOTOR_REV
     // For external drive gearing, set DRIVE_GEAR_REDUCTION as needed.
     // For example, use a value of 2.0 for a 12-tooth spur gear driving a 24-tooth spur gear.
     // This is gearing DOWN for less speed and more torque.
@@ -78,11 +77,11 @@ public class RobotAutoSimple extends LinearOpMode {
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
-
+        robot.init();
 
         // Wait for the game to start (driver presses START)
         waitForStart();
-        robot.driveStraightEncoder(1,10);
+        robot.driveStraightEncoder(1,-30);
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 

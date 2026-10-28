@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
@@ -65,8 +66,12 @@ public class MyRobot {
     public DcMotor backLeftDrive   = null;
     public DcMotor backRightDrive  = null;
     public DcMotor Pollinator   = null;
-    public Servo flowerRamp   =null;
-    public Servo Wind    = null;
+    public Servo flowerRamp   = null;
+    public CRServo PollerL    = null;
+    public CRServo PollerR   = null;
+    public CRServo Transfer = null;
+
+
 
 
 
@@ -91,23 +96,25 @@ public class MyRobot {
         backRightDrive = myOpMode.hardwareMap.get(DcMotor.class, "br");
         Pollinator = myOpMode.hardwareMap.get(DcMotor.class,"Launcher");
         flowerRamp = myOpMode.hardwareMap.get(Servo.class, "Flower");
-        Wind = myOpMode.hardwareMap.get(Servo.class, "Transfer");
-
-
+        Transfer = myOpMode.hardwareMap.get(CRServo.class, "Transfer");
+        PollerL = myOpMode.hardwareMap.get(CRServo.class, "pull left");
+        PollerR = myOpMode.hardwareMap.get(CRServo.class, "pull right");
 
 
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
-        frontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
-        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
-        backLeftDrive.setDirection(DcMotor.Direction.REVERSE);
-        backRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
+        frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
+        backRightDrive.setDirection(DcMotor.Direction.REVERSE);
 
         // If there are encoders connected, switch to RUN_USING_ENCODER mode for greater accuracy
-        // leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        // rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+         frontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+         frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+         backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+         backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         // Define and initialize ALL installed servos.
@@ -190,11 +197,10 @@ public class MyRobot {
         backRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         // wait while busy()
         while (
-                myOpMode.opModeIsActive() && (
-                        frontLeftDrive.isBusy() ||
-                                frontRightDrive.isBusy() ||
-                                backLeftDrive.isBusy() ||
-                                backRightDrive.isBusy())) {
+                myOpMode.opModeIsActive() && !(!frontLeftDrive.isBusy() &&
+                        !frontRightDrive.isBusy() &&
+                        !backLeftDrive.isBusy() &&
+                        !backRightDrive.isBusy())) {
             // do nothing
             myOpMode.telemetry.addData("Path", "%4.1f inches", inches);
             myOpMode.telemetry.addData("Path", "%4.1f rotations", rotationsNeeded);
@@ -207,7 +213,6 @@ public class MyRobot {
 
         // stop the motor
         stop();
-
         frontLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
